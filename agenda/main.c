@@ -90,13 +90,11 @@ int borrar(){
             //se re-organizan las posiciones
             tempPersona->siguiente->anterior = tempPersona->anterior;
             tempPersona->anterior->siguiente = tempPersona->siguiente;
-
             return 0;
             
         }
         
         tempPersona = tempPersona->siguiente;
-        
         
     }while(tempPersona != NULL);
     
@@ -227,7 +225,7 @@ int mostrar_menu(){
                 printf("Error en el menú");
         }
     }else{
-        printf("\n Opción introducida incorrecta. Ingrese una opción correcta, presione ENTER para continuar");
+        printf("\n Ingrese una opción correcta, presione ENTER para continuar");
     }
     return 1;
 }
