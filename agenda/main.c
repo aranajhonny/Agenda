@@ -140,7 +140,7 @@ int modificar(){
     return 1;
 }
 
-//función que valida la opción ingresada por el usuario desde el menú de opciones
+//función que valida la opción ingresada desde el menú 
 int valida_opcion(int opcion){
     if (opcion >= 1 && opcion <=5 )
     {
