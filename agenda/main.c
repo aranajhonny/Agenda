@@ -1,5 +1,5 @@
 //  Proesor jesus Saturno
-// seccion 2 
+// seccion 2
 //  agenda telefonica usando listas enlazadas
 //  Created by jhonny arana and Luis hernandez on 14/11/15.
 //  Copyright © 2015 jhonny. All rights reserved.
@@ -141,6 +141,26 @@ int modificar(){
     }while(tempPersona != NULL);
     return 1;
 }
+
+//función que recorre toda la agenda completa mostrando todos los registros en pantalla
+int ver_agenda_completa(){
+    
+    Persona *tempPersona=primera_persona;
+    
+    printf("\n----Mostrando agenda completa----");
+    do{
+        //muestro datos de la persona
+        printf("\n\nid:%d\t",tempPersona->id);
+        printf("Nombre:%s\t",tempPersona->nombre);
+        printf("Apellido:%s\t",tempPersona->apellido);
+        printf("Dirección:%s\t",tempPersona->direccion);
+        printf("Teléfono:%s\n",tempPersona->telefono);
+        //avanzo al siguiente en la lista
+        tempPersona=tempPersona->siguiente;
+    }while(tempPersona != NULL);
+    
+    return 1;
+}
 //funcion que reordena los id despues de borrar
 int reordenar(){
     Persona *tempPersona = primera_persona->siguiente;
@@ -170,26 +190,6 @@ int lista_vacia(){
     }else{
         return 0;
     }
-}
-
-//función que recorre toda la agenda completa mostrando todos los registros en pantalla
-int ver_agenda_completa(){
-    
-    Persona *tempPersona=primera_persona;
-    
-    printf("\n----Mostrando agenda completa----");
-    do{
-        //muestro datos de la persona
-        printf("\n\nid:%d\t",tempPersona->id);
-        printf("Nombre:%s\t",tempPersona->nombre);
-        printf("Apellido:%s\t",tempPersona->apellido);
-        printf("Dirección:%s\t",tempPersona->direccion);
-        printf("Teléfono:%s\n",tempPersona->telefono);
-        //avanzo al siguiente en la lista
-        tempPersona=tempPersona->siguiente;
-    }while(tempPersona != NULL);
-    
-    return 1;
 }
 
 //función para mostrar el menú principal de opciones de la agenda
