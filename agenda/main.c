@@ -1,7 +1,7 @@
-//
-//  main.c
+//  Proesor jesus Saturno
+// seccion 2 
 //  agenda telefonica usando listas enlazadas
-//  Created by jhonny on 14/11/15.
+//  Created by jhonny arana and Luis hernandez on 14/11/15.
 //  Copyright © 2015 jhonny. All rights reserved.
 //
 #include <stdio.h>
@@ -78,19 +78,19 @@ int borrar(){
                     primera_persona->id = 1; // asigno id 1 si no tiene nada antes ni despues
                     primera_persona->anterior = NULL;
                  }
-                return 0;
+                return 1;
             }
             // si la persona a borrar es la ultima de la lista
             if(tempPersona == ultima_persona){
                 ultima_persona = tempPersona->anterior;
                 ultima_persona->siguiente = NULL;
-                return 0;
+                return 1;
             }
             
             //se re-organizan las posiciones
             tempPersona->siguiente->anterior = tempPersona->anterior;
             tempPersona->anterior->siguiente = tempPersona->siguiente;
-            return 0;
+            return 1;
             
         }
         
@@ -98,6 +98,8 @@ int borrar(){
         
     }while(tempPersona != NULL);
     
+    primera_persona->id=1;
+
     return 0;
 }
 
@@ -139,8 +141,17 @@ int modificar(){
     }while(tempPersona != NULL);
     return 1;
 }
-
-//función que valida la opción ingresada desde el menú 
+//funcion que reordena los id despues de borrar
+int reordenar(){
+    Persona *tempPersona = primera_persona->siguiente;
+    do{
+        tempPersona->id = tempPersona->anterior->id + 1 ;
+        tempPersona = tempPersona->siguiente;
+    }while (tempPersona!=NULL);
+    
+    return 0;
+}
+//función que valida la opción ingresada desde el menú
 int valida_opcion(int opcion){
     if (opcion >= 1 && opcion <=5 )
     {
@@ -204,7 +215,9 @@ int mostrar_menu(){
             case 2:
                 if(lista_vacia()){break;}
                 if(borrar()){
-                    printf("\nNo existe registro con ese id.");
+                    reordenar();
+                }else{
+                    printf("\nNo existen elementos con ese id");
                 }
                 break;
             case 3:
@@ -230,8 +243,7 @@ int mostrar_menu(){
     return 1;
 }
 //función principal del programa
-int main()
-{
+int main(){
     //false = 0
     // true = 1
     
