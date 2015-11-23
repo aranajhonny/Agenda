@@ -1,4 +1,4 @@
-//  Proesor jesus Saturno
+//  Profesor jesus Saturno
 // seccion 2
 //  agenda telefonica usando listas enlazadas
 //  Created by jhonny arana and Luis hernandez on 14/11/15.
