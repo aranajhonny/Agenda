@@ -1,5 +1,5 @@
 //  Profesor jesus Saturno
-// seccion 2
+//  seccion 2
 //  agenda telefonica usando listas enlazadas
 //  Created by jhonny arana and Luis hernandez on 14/11/15.
 //  Copyright © 2015 jhonny. All rights reserved.
@@ -106,7 +106,7 @@ int borrar(){
 //función para modificar los datos de una persona que ya exista en la agenda
 int modificar(){
     Persona *tempPersona = primera_persona;
-    int id_temp;
+    int id_temp, opcion;
     //variables para los datos nuevos
     char nombre_nuevo[25],apellido_nuevo[25],direccion_nueva[50],telefono_nuevo[25];
     printf("\n----Modificando datos----");
@@ -116,30 +116,50 @@ int modificar(){
     while(getchar() != '\n');
     //do para recorrer la agenda
     do{
-        //si la cadena es igual a la buscada
+        //si el id es igual a la buscada
         if(id_temp == tempPersona->id){
-            printf("\nRegistros encontrados que coinciden con %d:",id_temp);
-            printf("\n Apellido:%s\n \n Nombre:%s\n \n Dirección:%s\n Teléfono:%s\n",tempPersona->apellido,tempPersona->nombre,tempPersona->direccion,tempPersona->telefono);
+            printf("\nRegistros encontrados que coinciden con id %d:",id_temp);
+            printf("\n Nombre: \t\t %s \n Apellido: \t %s \n Dirección: \t %s\n Teléfono: \t %s\n",tempPersona->nombre,tempPersona->apellido,tempPersona->direccion,tempPersona->telefono);
+            printf("\nIndique la opcion de lo que desea modificar:");
+            printf("\n Nombre \t\t --> 1\n Apellido \t --> 2\n Direccion \t --> 3\n Telefono \t --> 4 \n ");
+            scanf("%d",&opcion);
             //pido los nuevos datos para el registro
-            printf("Ingrese el nuevo Nombre:");
-            scanf( "%s", nombre_nuevo);
-            printf("Ingrese el nuevo Apellido:");
-            scanf( "%s", apellido_nuevo);
-            printf("Ingrese el nuevo teléfono");
-            scanf( "%s", telefono_nuevo);
-            while(getchar() != '\n');
-            printf("Ingrese la nueva dirección:");
-            scanf( "%[^\n]", direccion_nueva);
-            //asigno los nuevos valores al registro de la agenda copiando la cadena con strcpy
-            strcpy(tempPersona->nombre, nombre_nuevo);
-            strcpy(tempPersona->apellido, apellido_nuevo);
-            strcpy(tempPersona->direccion, direccion_nueva);
-            strcpy(tempPersona->telefono, telefono_nuevo);
+            if (opcion==1) {
+                printf("Ingrese el nuevo Nombre:");
+                scanf( "%s", nombre_nuevo);
+                strcpy(tempPersona->nombre, nombre_nuevo);
+                //asigno los nuevos valores con strcpy
+                return 1;
+            }
+            else if (opcion==2){
+                printf("Ingrese el nuevo Apellido:");
+                scanf( "%s", apellido_nuevo);
+                strcpy(tempPersona->apellido, apellido_nuevo);
+                //asigno los nuevos valores con strcpy
+                return 1;
+            }else if (opcion==3){
+                printf("Ingrese el nuevo teléfono");
+                scanf( "%s", telefono_nuevo);
+                strcpy(tempPersona->telefono, telefono_nuevo);
+                //asigno los nuevos valores con strcpy
+                return 1;
+            }else if (opcion==4){
+                while(getchar() != '\n');
+                printf("Ingrese la nueva dirección:");
+                scanf( "%[^\n]", direccion_nueva);
+                //asigno los nuevos valores con strcpy
+                strcpy(tempPersona->direccion, direccion_nueva);
+                return 1;
+            }else{
+                printf("opcion invalida");
+                return 1;
+            }
+            
         }
         //avanzo al siguiente en la lista
         tempPersona = tempPersona->siguiente;
     }while(tempPersona != NULL);
-    return 1;
+    return 0;
 }
 
 //función que recorre toda la agenda completa mostrando todos los registros en pantalla
